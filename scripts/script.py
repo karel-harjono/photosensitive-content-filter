@@ -18,7 +18,7 @@ def analyze_video(path):
       gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
       intensity.append(cv2.mean(gray))
       # Display the resulting frame
-      cv2.imshow('Frame',gray)
+      cv2.imshow('Frame',frame)
 
       # Press Q on keyboard to  exit
       if cv2.waitKey(25) & 0xFF == ord('q'):
@@ -44,5 +44,5 @@ def show(x, y):
   ax.set_ylabel('intensity')
   plt.show()
 
-x, y = analyze_video('videos/pokemon_deleted_scene.mp4')
+x, y = analyze_video('videos/Color Test Monitor ABC.mp4')
 show(x ,y)
