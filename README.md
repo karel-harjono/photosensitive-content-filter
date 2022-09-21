@@ -1,17 +1,17 @@
-
-# Table of Contents
+# Photosensitive Content Filter
+## Table of Contents
 1. [Objectives and timeframes](#objectives)
 2. [TODO](#todo)
 	- [september](#september)
 	- [october](#october)
 
-# Photosensitive Content Filter
 
-Objective: build a Chrome extension to intercept, detect, and filter unsafe excessive photosensitive Youtube content.
+## Objective:
+- build a Chrome extension to intercept, detect, and filter unsafe excessive photosensitive Youtube content.
 
-# TODO:
+## TODO:
 
-## September
+### September
 | no.| task  | time estimate(hr) | who | status | desc
 |--|--|--|--|--|--|
 |1| create initial project documentation | 1 | all | ongoing | add in suggestion please |
@@ -22,7 +22,7 @@ Objective: build a Chrome extension to intercept, detect, and filter unsafe exce
 |6| build base repo for chrome extension | 3 |  |  |  |
 |7| create base UI | 3 |  |  |  |
 
-## October
+### October
 | no.| task  | time estimate(hr) | who | status | desc
 |--|--|--|--|--|--|
 |1| compile another set of test videos(10) |  |  |  | 
