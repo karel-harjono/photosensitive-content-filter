@@ -1,0 +1,10 @@
+{
+  "name": "Photosensitive Content Filter",
+  "description": "TODO: Add this later",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "chrome_ext/background.js"
+  },
+  "permissions": ["storage", "tabs", "debugger"]
+}
