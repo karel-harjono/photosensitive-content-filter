@@ -1,13 +1,14 @@
-let detached = false;
+let isAttached = false;
 chrome.tabs.onUpdated.addListener((tabId, _, tab) => {
-  console.log(tab);
+  // console.log(tab);
   // let attached;
   // chrome.debugger.getTargets((targetInfo) => {
   //   attached = targetInfo.attached;
   //   console.log(targetInfo);
   // });
-  if (tab?.url?.includes("jsonplaceholder")) {
+  if (tab?.url?.includes("https://media.istockphoto.com/photos/chihuahua-sitting-looking-at-the-camera-5-year-old-isolated-on-white-picture-id889640780?k=20&m=889640780&s=612x612&w=0&h=kelR7wgaxM-Im_eCMdRFVcFMSrFYxBy92Wkt2l0W4ew=") && isAttached === false) {
     chrome.debugger.attach({ tabId }, "1.0", () => {
+      isAttached = true;
       chrome.debugger.sendCommand({ tabId }, "Network.enable"); // after attached, enable network tracking
 
       // chrome.debugger.onDetach.addListener(() => {
@@ -17,10 +18,12 @@ chrome.tabs.onUpdated.addListener((tabId, _, tab) => {
       // });
 
       chrome.debugger.onEvent.addListener((debuggeeId, message, params) => {
-        if (detached || tabId != debuggeeId.tabId) {
+        if (tabId != debuggeeId.tabId) {
           return;
         }
-
+        if (message == "Network.requestWillBeSent") {
+          console.log('sending request: ', params.request)
+        }
         if (message == "Network.responseReceived") {
           chrome.debugger.sendCommand(
             { tabId },
@@ -28,9 +31,11 @@ chrome.tabs.onUpdated.addListener((tabId, _, tab) => {
             { requestId: params.requestId },
             (response) => {
               console.log(response);
-
-              // // you can close the debugger tips by:
+              console.log(JSON.stringify(response?.body));
+              // isAttached = false;
+              // console.log('setting isAttached to ', isAttached);
               // chrome.debugger.detach({ tabId });
+              // console.log('debugger detached.');
             }
           );
         }
